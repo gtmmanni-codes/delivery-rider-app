@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f7f2">
+  <meta name="description" content="See when local delivery demand is likely to peak and plan your next rider shift.">
+  <title>Rally — Ride the rush</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="Rally home"><span class="brand-mark">r</span><span>rally<span class="brand-period">.</span></span></a>
+      <div class="sidebar-label">YOUR SPACE</div>
+      <nav class="side-nav" aria-label="Main navigation">
+        <button class="nav-link is-active" data-view="forecast"><span class="nav-icon">◷</span> Demand forecast</button>
+        <button class="nav-link" data-view="shifts"><span class="nav-icon">▤</span> My shifts <span class="nav-count" id="nav-count">0</span></button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="weather-card">
+          <div class="weather-top"><span>AROUND TOWN</span><span>◌</span></div>
+          <div class="weather-condition"><span class="weather-sun">☀</span><span><strong>18°</strong><small>Clear skies today</small></span></div>
+          <p>Good riding weather. No rain expected.</p>
+        </div>
+        <div class="profile">
+          <div class="avatar">J</div>
+          <div><strong>Jamie Parker</strong><small>Part-time rider</small></div>
+          <span class="profile-dots">···</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="mobile-brand"><span class="brand-mark">r</span><span>rally<span class="brand-period">.</span></span></div>
+        <div class="location"><span class="location-pin">⌖</span><span><small>YOUR PATCH</small><strong>Manchester City Centre</strong></span><span class="chevron">⌄</span></div>
+        <div class="topbar-right"><span class="live-dot"></span><span>MOCK DEMAND · DEMO</span><button class="icon-button" aria-label="Notifications">♧<i></i></button></div>
+      </header>
+      <nav class="mobile-nav" aria-label="Main navigation">
+        <button class="nav-link is-active" data-view="forecast"><span class="nav-icon">◷</span> Forecast</button>
+        <button class="nav-link" data-view="shifts"><span class="nav-icon">▤</span> My shifts</button>
+      </nav>
+
+      <section class="page-view" id="forecast-view">
+        <div class="welcome-row">
+          <div><p class="eyebrow" id="today-label">MONDAY, 12 MAY</p><h1>Make your hours <span>count.</span></h1><p class="subtitle">Know when the orders are coming. You choose when to ride.</p></div>
+          <div class="goal-chip"><span class="goal-icon">↗</span><span><small>YOUR WEEKLY GOAL</small><strong>£<span id="goal-display">180</span> <button id="edit-goal" aria-label="Edit weekly earnings goal">✎</button></strong></span></div>
+        </div>
+
+        <div class="week-strip" id="week-strip" aria-label="Choose a day"></div>
+
+        <section class="forecast-card">
+          <div class="card-heading">
+            <div><div class="title-with-dot"><span class="pulse-dot"></span><h2>Demand forecast</h2><span class="forecast-badge">SIMULATED</span></div><p id="chart-description">A typical Monday in your patch</p></div>
+            <span class="period-button" id="period-button">Today</span>
+          </div>
+          <div class="chart-legend"><span><i class="legend-demand"></i>Expected orders</span><span><i class="legend-earnings"></i>Est. hourly earnings</span></div>
+          <div class="chart-wrap" id="chart-wrap"></div>
+          <div class="chart-foot"><span><i class="status-dot"></i> More orders than riders usually online</span><span>Based on local patterns</span></div>
+        </section>
+
+        <section class="bottom-grid">
+          <article class="recommend-card">
+            <div class="section-kicker">✦ &nbsp; YOUR BEST WINDOW</div>
+            <div class="recommend-main"><div><h2 id="recommend-time">5:30 – 8:30 pm</h2><p id="recommend-detail">Dinner rush · demand is usually high</p></div><div class="earnings-pill"><small>EST. EARNINGS</small><strong id="recommend-earnings">£42–£54</strong></div></div>
+            <div class="recommend-divider"></div>
+            <div class="recommend-footer"><span><span class="tiny-icon">↗</span> Your best 3-hour window today</span><button class="primary-button" id="add-shift">Add to my shifts <span>＋</span></button></div>
+          </article>
+
+          <article class="insight-card">
+            <div class="insight-icon">✳</div><div class="insight-copy"><div class="section-kicker">RIDER INSIGHT</div><p id="insight-text">Dinner demand is usually <strong>32% higher</strong> than the afternoon lull around your patch.</p><span>Patterns from similar days</span></div>
+          </article>
+        </section>
+        <footer class="disclaimer"><span>ⓘ</span> Forecasts are estimates based on simulated local patterns — actual demand and earnings will vary.</footer>
+      </section>
+
+      <section class="page-view shifts-view is-hidden" id="shifts-view">
+        <div class="shifts-heading"><div><p class="eyebrow">YOUR PLAN</p><h1>My shifts<span>.</span></h1><p class="subtitle">A little planning goes a long way.</p></div><button class="secondary-button" id="back-to-forecast">← &nbsp; View forecast</button></div>
+        <div class="summary-grid">
+          <article class="summary-card"><span>PLANNED HOURS</span><strong id="planned-hours">0 hrs</strong><small>Across your upcoming shifts</small></article>
+          <article class="summary-card"><span>ESTIMATED EARNINGS</span><strong id="planned-earnings">£0</strong><small>Based on forecast windows</small></article>
+          <article class="summary-card"><span>WEEKLY GOAL</span><strong id="goal-progress">£0 <i>/ £180</i></strong><div class="progress-track"><div id="progress-fill"></div></div></article>
+        </div>
+        <div class="shift-list-heading"><h2>Upcoming shifts</h2><span id="shift-count">0 shifts</span></div>
+        <div id="shift-list" class="shift-list"></div>
+        <div class="empty-state" id="empty-state"><div class="empty-icon">◷</div><h3>No shifts planned yet</h3><p>Check the demand forecast and add a window that works for you.</p><button class="primary-button" id="empty-forecast">Explore the forecast <span>→</span></button></div>
+      </section>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
